@@ -36,9 +36,9 @@ class MoveModel {
   }
 
   Image getImage() {
-    if (move == Move.Paper) return Image(image: AssetImage('images/paper.png'));
-    else if (move == Move.Rock) return Image(image: AssetImage('images/rock.png'));
-    else return Image(image: AssetImage('images/scissors.png'));
+    if (move == Move.Paper) return Image(image: AssetImage('images/paper.png'), width: 100, height: 100,);
+    else if (move == Move.Rock) return Image(image: AssetImage('images/rock.png'), width: 100, height: 100,);
+    else return Image(image: AssetImage('images/scissors.png'), width: 100, height: 100,);
   }
 
   MoveModel getNextMove() {
