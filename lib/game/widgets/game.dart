@@ -18,22 +18,28 @@ class Game extends StatelessWidget {
   void onRoundEnd(BuildContext context) {
     if (MoveModel.canWin(playerSelectionController.value, computerSelectionController.value)) {
       WidgetsBinding.instance.addPostFrameCallback((_) {
-        SnackBar(
-          content: Text('You won!'),
+        Scaffold.of(context).showSnackBar(
+          SnackBar(
+            content: Text('You won!'),
+          )
         );
       });
     }
     else if (MoveModel.draw(playerSelectionController.value, computerSelectionController.value)) {
       WidgetsBinding.instance.addPostFrameCallback((_) {
-        SnackBar(
-          content: Text('It\'s a tie!'),
+        Scaffold.of(context).showSnackBar(
+          SnackBar(
+            content: Text('It\'s a tie!'),
+          )
         );
       });
     }
     else {
       WidgetsBinding.instance.addPostFrameCallback((_) {
-        SnackBar(
-          content: Text('You lost!'),
+        Scaffold.of(context).showSnackBar(
+          SnackBar(
+            content: Text('You lost!'),
+          )
         );
       });
     }
