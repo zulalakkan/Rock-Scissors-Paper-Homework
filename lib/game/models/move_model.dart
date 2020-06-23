@@ -15,7 +15,7 @@ class MoveModel {
 
   MoveModel({this.move});
 
-  //TODO: You can see how named constructors work here
+  // Named constructor
   MoveModel.random(){
     var result = Random().nextInt(3);
     if (result == 0) move = Move.Rock;
@@ -36,10 +36,9 @@ class MoveModel {
   }
 
   Image getImage() {
-    // TODO: change image paths
-    if (move == Move.Paper) return Image(image: AssetImage('paper.png'));
-    else if (move == Move.Rock) return Image(image: AssetImage('Rock.png'));
-    else return Image(image: AssetImage('Scissors.png'));
+    if (move == Move.Paper) return Image(image: AssetImage('images/paper.png'), width: 100, height: 100,);
+    else if (move == Move.Rock) return Image(image: AssetImage('images/rock.png'), width: 100, height: 100,);
+    else return Image(image: AssetImage('images/scissors.png'), width: 100, height: 100,);
   }
 
   MoveModel getNextMove() {

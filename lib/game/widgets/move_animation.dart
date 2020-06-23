@@ -16,8 +16,9 @@ class _MoveAnimationState extends State<MoveAnimation> {
 
   _MoveAnimationState(){
     move = MoveModel.random();
-    // TODO: Set timer to call setState(() => move = move.getNextMove()); }
+    // Set timer to call setState(() => move = move.getNextMove()); }
     // every x miliseconds
+    timer = Timer.periodic(Duration(milliseconds: 30), (timer) => {setState(()=> move = move.getNextMove()) });
   }
 
   @override

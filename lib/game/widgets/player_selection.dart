@@ -27,9 +27,20 @@ class _PlayerSelectionState extends State<PlayerSelection> {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
-        // TODO: Implement Icon button which will call setMove(controller.value.getNextMove())
-        // TODO: Call controller.value.getImage() which will get the image of the move
-        // TODO: Implement Icon button which will call setMove(controller.value.getPreviousMove())
+        // Implement Icon button which will call setMove(controller.value.getNextMove())
+        //  Call controller.value.getImage() which will get the image of the move
+        //  Implement Icon button which will call setMove(controller.value.getPreviousMove())
+        IconButton(
+          icon: Icon(Icons.arrow_upward),
+          onPressed: () => setMove(controller.value.getNextMove()),
+        ),
+        SizedBox(
+          child: controller.value.getImage(),
+        ),
+        IconButton(
+          icon: Icon(Icons.arrow_downward),
+          onPressed: () => setMove(controller.value.getPreviousMove()),
+        ),
       ],
     );
   }
