@@ -3,8 +3,11 @@ import 'package:homework_with_todos/game/models/move_model.dart';
 import 'package:homework_with_todos/game/models/selection_controller.dart';
 import 'package:homework_with_todos/game/models/start_controller.dart';
 
+import 'computer_selection.dart';
+import 'player_selection.dart';
+
 class Game extends StatelessWidget {
-  // TODO: look the definitions of SelectionController and StartController 
+  // look the definitions of SelectionController and StartController 
   // They are just events that trigger some methods of child widget and/or hold value
   final SelectionController playerSelectionController = SelectionController(MoveModel(move: Move.Paper));
   final SelectionController computerSelectionController = SelectionController(MoveModel(move: Move.Paper));
@@ -15,17 +18,23 @@ class Game extends StatelessWidget {
   void onRoundEnd(BuildContext context) {
     if (MoveModel.canWin(playerSelectionController.value, computerSelectionController.value)) {
       WidgetsBinding.instance.addPostFrameCallback((_) {
-        // TODO: show snackbar win message
+        SnackBar(
+          content: Text('You won!'),
+        );
       });
     }
     else if (MoveModel.draw(playerSelectionController.value, computerSelectionController.value)) {
       WidgetsBinding.instance.addPostFrameCallback((_) {
-        // TODO: show snackbar draw message
+        SnackBar(
+          content: Text('It\'s a tie!'),
+        );
       });
     }
     else {
       WidgetsBinding.instance.addPostFrameCallback((_) {
-        // TODO: show snackbar lost message
+        SnackBar(
+          content: Text('You lost!'),
+        );
       });
     }
   }
@@ -36,17 +45,28 @@ class Game extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: <Widget>[
-        // TODO: Add PlayerSelection 
+        // Add PlayerSelection 
         // Hint: it is biig make it small
         // Tip: You should set controller as playerSelectController
+        PlayerSelection(
+          controller: playerSelectionController,
+        ),
         
-        // TODO: Add Button
+        // Add Button
         // Hint: set onPressed to animationStartController.start(). this will start the random animation on computer selection
+        RaisedButton(
+          onPressed: () => animationStartController.start(),
+        ),
 
-        // TODO: Add Computer Selection
+        // Add Computer Selection
         // Tip: You should set controller as computerSelectController
         // Tip: You should set animationController as animationStartController
         // Tip: You should set onSelected to onRoundEnd since game will end when computer select the move
+        ComputerSelection(
+          controller: computerSelectionController,
+          animationController: animationStartController,
+          onSelected: () => onRoundEnd(context),
+        ),
       ],
     );
   }

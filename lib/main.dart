@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'game/game_page.dart';
+
 void main() {
   runApp(MyApp());
 }
@@ -10,9 +12,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       theme: ThemeData(
         primarySwatch: Colors.orange,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
+        // visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: , // TODO: Add Game Page  
+      home: GamePage(),
     );
   }
 }
